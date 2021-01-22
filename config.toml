@@ -82,7 +82,7 @@ paginate = 10
     enableGoogleMaps = false
     googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
 
-    latitude = "-12.043333"
+    latitude = "-12.043332"
     longitude = "-77.028333"
 
     #Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet

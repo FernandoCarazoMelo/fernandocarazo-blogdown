@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Fernando Carazo</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Fernando Carazo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crea tu web personal en 5 minutos</title>
+      <link>/post/crea-tu-web-personal-en-5-minutos/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/crea-tu-web-personal-en-5-minutos/</guid>
+      <description>Tu primera página personal!Bienvenido al tutorial que necesitas para crear tu página personal.
+Si te dedicas al marketing, programación, ciencia de datos, eres diseñador gráfico o miles de profesiones más, tener tu sitio personal te abrirá muchas puertas en tu carrera profesional.
+Después de dar muchas vueltas y probar distintas opciones para crear tu página personal, te comparto mis experiencias.
+Comenzamos!
+Empieza desde cero!library(blogdown)library(rmarkdown)x &amp;lt;- data(&amp;quot;AirPassengers&amp;quot;)kableExtra::kable(x)xAirPassengersVoilà!</description>
+    </item>
+    
+    <item>
+      <title>post_2</title>
+      <link>/post/post-2/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/post-2/</guid>
+      <description>image for dani
+</description>
+    </item>
+    
+  </channel>
+</rss>

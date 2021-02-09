@@ -1,0 +1,37 @@
+---
+title: Crea tu web personal en 5 minutos
+author: Fernando Carazo
+date: '2021-02-09'
+slug: crea-tu-web-personal-en-5-minutos
+categories:
+  - programming
+  - starting
+tags:
+  - R Markdown
+---
+
+
+# Tu primera página personal!
+
+Bienvenido al tutorial que necesitas para crear tu página personal. 
+
+Si te dedicas al marketing, programación, ciencia de datos, eres diseñador gráfico o miles de profesiones más, tener tu sitio personal te abrirá muchas puertas en tu carrera profesional.
+
+Después de dar muchas vueltas y probar distintas opciones para crear tu página personal, te comparto mis experiencias. 
+
+Comenzamos!
+
+# Empieza desde cero!
+
+```{r}
+library(blogdown)
+library(rmarkdown)
+x <- data("AirPassengers")
+kableExtra::kable(x)
+```
+
+
+# Voilà!
+
+# Publica tu primer post
+

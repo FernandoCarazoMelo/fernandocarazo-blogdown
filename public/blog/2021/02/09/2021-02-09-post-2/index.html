@@ -7,8 +7,8 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Hugo is for lovers</title>
-  <meta name="author" content="DevCows" />
+  <title>post_2</title>
+  <meta name="author" content="Fernando Carazo" />
   
   
   
@@ -66,37 +66,37 @@
   
   <meta property="og:locale" content="en_us">
   <meta property="og:site_name" content="Fernando Carazo">
-  <meta property="og:title" content="Hugo is for lovers">
+  <meta property="og:title" content="post_2">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="/blog/2015/08/03/hugo-is-for-lovers/" />
+  <meta property="og:url" content="/blog/2021/02/09/2021-02-09-post-2/" />
   <meta property="og:description" content="Site template made by devcows using hugo">
-  <meta property="og:image" content="/img/banners/banner-3.jpg">
-  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image" content="/img/sharing-default.png">
+  <meta property="og:image:type" content="image/png">
   
   
   
-    <meta property="og:image:width" content="1000">
-    <meta property="og:image:height" content="750">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="420">
   
   
-  <meta property="og:updated_time" content="2015-08-03T13:39:46&#43;0200">
+  <meta property="og:updated_time" content="2021-02-09T00:00:00Z">
   
     
     
-    <meta property="article:section" content="pseudo">
+    <meta property="article:section" content="programming">
     <meta property="article:tag" content="hugo">
     
     
-    <meta property="article:published_time" content="2015-08-03T13:39:46&#43;0200">
-    <meta property="article:modified_time" content="2015-08-03T13:39:46&#43;0200">
+    <meta property="article:published_time" content="2021-02-09T00:00:00Z">
+    <meta property="article:modified_time" content="2021-02-09T00:00:00Z">
   
 
   
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@GoHugoIO">
-  <meta name="twitter:title" content="Hugo is for lovers">
+  <meta name="twitter:title" content="post_2">
   
-  <meta name="twitter:image" content="/img/banners/banner-3.jpg">
+  <meta name="twitter:image" content="/img/sharing-default.png">
   
   <meta name="twitter:description" content="Site template made by devcows using hugo">
   
@@ -113,9 +113,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/logo.png" alt="Hugo is for lovers logo" class="hidden-xs hidden-sm">
-                    <img src="/img/logo-small.png" alt="Hugo is for lovers logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Hugo is for lovers - go to homepage</span>
+                    <img src="/img/logo.png" alt="post_2 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logo-small.png" alt="post_2 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">post_2 - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -141,13 +141,6 @@
                   <li class="dropdown active">
                     
                     <a href="/blog/">Blog</a>
-                    
-                  </li>
-                  
-                  
-                  <li class="dropdown">
-                    
-                    <a href="/faq/">FAQ</a>
                     
                   </li>
                   
@@ -184,7 +177,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Hugo is for lovers</h1>
+                <h1>post_2</h1>
             </div>
         </div>
     </div>
@@ -202,67 +195,20 @@
 
                         
                           <p class="text-muted text-uppercase mb-small text-right">
-                            
-                            
-                            August 3, 2015
+                            By <a href="#">Fernando Carazo</a>
+                             | 
+                            February 99, 9092
                           </p>
                         
 
                         <div id="post-content">
-                          <h2 id="step-1-install-hugo">Step 1. Install Hugo</h2>
-<p>Goto <a href="https://github.com/spf13/hugo/releases">hugo releases</a> and download the
-appropriate version for your os and architecture.</p>
-<p>Save it somewhere specific as we will be using it in the next step.</p>
-<p>More complete instructions are available at <a href="/overview/installing/">installing hugo</a></p>
-<h2 id="step-2-build-the-docs">Step 2. Build the Docs</h2>
-<p>Hugo has its own example site which happens to also be the documentation site
-you are reading right now.</p>
-<p>Follow the following steps:</p>
-<ol>
-<li>Clone the <a href="http://github.com/spf13/hugo">hugo repository</a></li>
-<li>Go into the repo</li>
-<li>Run hugo in server mode and build the docs</li>
-<li>Open your browser to http://localhost:1313</li>
-</ol>
-<p>Corresponding pseudo commands:</p>
-<pre><code>git clone https://github.com/spf13/hugo
-cd hugo
-/path/to/where/you/installed/hugo server --source=./docs
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 27 ms
-&gt; Web Server is available at http://localhost:1313
-&gt; Press ctrl+c to stop
-</code></pre>
-<p>Once you&rsquo;ve gotten here, follow along the rest of this page on your local build.</p>
-<h2 id="step-3-change-the-docs-site">Step 3. Change the docs site</h2>
-<p>Stop the Hugo process by hitting ctrl+c.</p>
-<p>Now we are going to run hugo again, but this time with hugo in watch mode.</p>
-<pre><code>/path/to/hugo/from/step/1/hugo server --source=./docs --watch
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 27 ms
-&gt; Web Server is available at http://localhost:1313
-&gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
-&gt; Press ctrl+c to stop
-</code></pre>
-<p>Open your <a href="http://vim.spf13.com">favorite editor</a> and change one of the source
-content pages. How about changing this very file to <em>fix the typo</em>. How about changing this very file to <em>fix the typo</em>.</p>
-<p>Content files are found in <code>docs/content/</code>. Unless otherwise specified, files
-are located at the same relative location as the url, in our case
-<code>docs/content/overview/quickstart.md</code>.</p>
-<p>Change and save this file.. Notice what happened in your terminal.</p>
-<pre><code>&gt; Change detected, rebuilding site
+                          
 
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 26 ms
-</code></pre>
-<p>Refresh the browser and observe that the typo is now fixed.</p>
-<p>Notice how quick that was. Try to refresh the site before it&rsquo;s finished building.. I double dare you.
-Having nearly instant feedback enables you to have your creativity flow without waiting for long builds.</p>
-<h2 id="step-4-have-fun">Step 4. Have fun</h2>
-<p>The best way to learn something is to play with it.</p>
+
+<div class="figure">
+<img src="/post/2021-02-09-post-2.en_files/img_1.jpg" alt="" />
+<p class="caption">image for dani</p>
+</div>
 
                         </div>
                         
@@ -281,7 +227,7 @@ Having nearly instant feedback enables you to have your creativity flow without 
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "devcows" + '.disqus.com/embed.js';
+        s.src = '//' + "fernandocarazo" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -344,7 +290,7 @@ Having nearly instant feedback enables you to have your creativity flow without 
             </li>
             
             <li>
-                <a href="/categories/programming">programming (2)</a>
+                <a href="/categories/programming">programming (4)</a>
             </li>
             
             <li>
@@ -352,11 +298,11 @@ Having nearly instant feedback enables you to have your creativity flow without 
             </li>
             
             <li>
-                <a href="/categories/r">r (1)</a>
+                <a href="/categories/r">r (2)</a>
             </li>
             
             <li>
-                <a href="/categories/starting">starting (1)</a>
+                <a href="/categories/starting">starting (3)</a>
             </li>
             
         </ul>
@@ -449,7 +395,7 @@ Having nearly instant feedback enables you to have your creativity flow without 
         <div class="col-md-4 col-sm-6">
             <h4>About us</h4>
 
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <p>Fernando Carazo <br> <br> Ph.D. in Data Science and Artificial intelligence with a research stay at Stanford. Expert in developing ML projects for biomedical applications.</p>
 
             <hr class="hidden-md hidden-lg hidden-sm">
 
@@ -466,6 +412,32 @@ Having nearly instant feedback enables you to have your creativity flow without 
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/2021/02/09/2021-02-09-crea-tu-web-personal-en-5-minutos.es/">
+                          
+                            <img src="/img/placeholder.png" class="img-responsive" alt="Crea tu web personal en 5 minutos">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/2021/02/09/2021-02-09-crea-tu-web-personal-en-5-minutos.es/">Crea tu web personal en 5 minutos</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/2021/02/09/2021-02-09-post-2/">
+                          
+                            <img src="/img/placeholder.png" class="img-responsive" alt="post_2">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/2021/02/09/2021-02-09-post-2/">post_2</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/2015/10/02/linked-post/">
                           
                             <img src="/img/banners/banner-4.jpg" class="img-responsive" alt="Linked post">
@@ -474,32 +446,6 @@ Having nearly instant feedback enables you to have your creativity flow without 
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/2015/10/02/linked-post/">Linked post</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/2015/09/17/go-is-for-lovers/">
-                          
-                            <img src="/img/banners/banner-2.jpg" class="img-responsive" alt="Go is for lovers">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/2015/09/17/go-is-for-lovers/">Go is for lovers</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/2015/08/03/hugo-is-for-lovers/">
-                          
-                            <img src="/img/banners/banner-3.jpg" class="img-responsive" alt="Hugo is for lovers">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/2015/08/03/hugo-is-for-lovers/">Hugo is for lovers</a></h5>
                     </div>
                 </div>
                 
@@ -516,13 +462,13 @@ Having nearly instant feedback enables you to have your creativity flow without 
 
           <h4>Contact</h4>
 
-            <p class="text-uppercase"><strong>Universal Ltd.</strong>
-        <br>13/25 New Avenue
-        <br>Newtown upon River
-        <br>45Y 73J
-        <br>England
+            <p class="text-uppercase"><strong>Fernando Carazo Ltd.</strong>
+        <br>Parque tecnológico Miramón
+        <br>Paseo de Mikeletegui nº48
+        <br>20009
+        <br>San Sebastián
         <br>
-        <strong>Great Britain</strong>
+        <strong>España</strong>
       </p>
       
 
@@ -548,7 +494,7 @@ Having nearly instant feedback enables you to have your creativity flow without 
     <div class="container">
         <div class="col-md-12">
             
-            <p class="pull-left">Copyright (c) 2015 - 2016, YourCompany; all rights reserved.</p>
+            <p class="pull-left">Copyright (c) 2021, Fernando Carazo; all rights reserved.</p>
             
             <p class="pull-right">
               Template by <a href="https://bootstrapious.com/p/universal-business-e-commerce-template">Bootstrapious</a>.
@@ -575,12 +521,6 @@ Having nearly instant feedback enables you to have your creativity flow without 
 <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
-
-
-<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y&v=3.exp"></script>
-
-<script src="/js/hpneo.gmaps.js"></script>
-<script src="/js/gmaps.init.js"></script>
 
 <script src="/js/front.js"></script>
 

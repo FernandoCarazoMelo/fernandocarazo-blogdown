@@ -1,0 +1,150 @@
+---
+title: Network Clusters
+date: 2021-04-23
+output: 
+  html_document:
+    theme: spacelab
+    highlight: haddock
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    df_print: paged
+    number_sections: true
+    
+author: Fernando Carazo^1^ 
+# bibliography: "references.bib" # Create file and uncomment. Cite as ej [@Ignatiadis_2016]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) # warning = FALSE, message = FALSE
+# library("knitcitations")
+#cleanbib()
+options("citation_format" = "pandoc")
+# write.bibtex(file="references.bib")
+# Set the graphical theme
+ggplot2::theme_set(ggplot2::theme_light())  
+
+
+```
+
+Contact info: **Fernando Carazo** <fcarazo@tecnun.es>
+
+[*^1^Department of Biomedical Engineering and Sciences, Tecnun. University of Navarre*](https://www.unav.edu/en/web/departamento-de-ingenieria-biomedica-y-ciencias/investigacion/computational-biology/presentacion)
+
+
+```{r}
+#####################################################################################
+# Author: Fernando Carazo | fcarazo@tecnun.es
+# Copyright (C) 2021, code licensed under GPLv3
+#####################################################################################
+
+
+# Library and source ------------------------------------------------------
+
+library(igraph)
+library(visNetwork)
+library(pheatmap)
+
+# Input -------------------------------------------------------------------
+
+load(file = "01.02_Clusters_ExS_POSTAR.RData"); 
+
+
+```
+
+
+
+```{r}
+
+# Correlations ExS --------------------------------------------------------
+
+
+
+Cors <- (cor(ExS, method = "pearson"))
+Cors[Cors > 0.3] <- 0.3
+# Cors[pv > 0.1] <- 0
+pheatmap(Cors, cutree_cols = 10, main = "Pearson Correlation of RBPs (FDR < 0.1)")
+
+hist(Cors, 100, main = "Histogram of Pearson Correlation")
+
+library(psych)
+aux <- corr.test(ExS, method = "pearson", adjust = "BH")
+pv <- aux$p
+pv[lower.tri(pv)] <- NA
+pv[pv < 1e-16] <- 1e-16
+pheatmap(log10(pv), cluster_rows = F, cluster_cols = F)
+
+
+# Library
+Cors <- (cor(ExS, method = "pearson"))
+
+thr <- 0.5
+data <- Cors
+thr <- thr + 0.02
+data[data < thr] <- 0
+data[data >= thr] <- 1
+data[pv > 0.5] <- 0
+
+network=graph_from_adjacency_matrix(data , mode='undirected', diag=F )
+net2 <- delete.vertices(network, V(network)[ igraph::degree(network) == 0 ])
+
+
+set.seed(2); plot(cluster_fast_greedy(net2), net2,vertex.label.color="black", 
+                  vertex.label.font=2, vertex.label.dist=1, 
+                  vertex.label.cex=.9,
+                  vertex.size = 4, edge.curved = 0.1, edge.width = log2(Cors*100), 
+                  main = sprintf("CLIP coocurrence (cor >= %s)", thr))
+
+net3 <- delete.vertices(network, V(network)[ igraph::degree(network) == 0 ])
+
+
+vn <- toVisNetworkData(net2)
+visNetwork(vn$nodes, vn$edges)
+
+# # iGraph ------------------------------------------------------------------
+# 
+# # jaccard distance
+# 
+# library(philentropy)
+# getDistMethods()
+# Dist <- distance(t(ExS), method = "jaccard")
+# 
+# rownames(Dist) <- colnames(Dist) <- colnames(ExS)
+# 
+# hist(Dist, 100, main = "Jaccard distance histogram")
+# 
+# data <- Dist
+# thr <- 0.7
+# data[Dist <= thr] <- 1
+# data[Dist > thr] <- 0
+# 
+# 
+# Fisher <- Dist
+# Fisher[,] <- NA
+# 
+# for(i in 1:nrow(Fisher)){
+#   for(j in 1:ncol(Fisher)){
+#     sacadasnegras <- sum(ExS[,i]*ExS[,j])
+#     negras <- sum(ExS[,i])
+#     sacadas <- sum(ExS[,j])
+#     total <- nrow(ExS)
+#     Fisher[i,j] <- phyper(sacadasnegras, negras, total-negras, sacadas, lower.tail = F)
+#   }
+# }
+# 
+# Fisher_BH <- matrix(p.adjust(Fisher, "BH"), ncol = ncol(Fisher), byrow = T)
+# data[Fisher_BH > 0.05] <- 0
+# 
+# network=graph_from_adjacency_matrix(data , mode='undirected', diag=F )
+# 
+# net2 <- delete.vertices(network, V(network)[ igraph::degree(network) == 0 ])
+# 
+# set.seed(2)
+# x11();plot(cluster_fast_greedy(net2), net2,vertex.label.color="black", 
+#            vertex.label.font=2, vertex.label.dist=1, 
+#            vertex.label.cex=.9,
+#            vertex.size = 4, edge.curved = 0.1, edge.width = log2(Cors*100), main = "CLIP coocurrence. Jaccard distance < 0.7")
+
+
+```
+

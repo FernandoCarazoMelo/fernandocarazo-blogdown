@@ -6,32 +6,23 @@
     <description>Recent content in Posts on Fernando Carazo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Crea tu web personal en 5 minutos</title>
-      <link>/post/crea-tu-web-personal-en-5-minutos/</link>
-      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      <title>Challenge2021 - Amazon</title>
+      <link>/post/challenge2021-amazon/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>/post/crea-tu-web-personal-en-5-minutos/</guid>
-      <description>Tu primera página personal!Bienvenido al tutorial que necesitas para crear tu página personal.
-Si te dedicas al marketing, programación, ciencia de datos, eres diseñador gráfico o miles de profesiones más, tener tu sitio personal te abrirá muchas puertas en tu carrera profesional.
-Después de dar muchas vueltas y probar distintas opciones para crear tu página personal, te comparto mis experiencias.
-Comenzamos!
-Empieza desde cero!library(blogdown)library(rmarkdown)x &amp;lt;- data(&amp;quot;AirPassengers&amp;quot;)kableExtra::kable(x)xAirPassengersVoilà!</description>
-    </item>
-    
-    <item>
-      <title>post_2</title>
-      <link>/post/post-2/</link>
-      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/post/post-2/</guid>
-      <description>image for dani
-</description>
+      <guid>/post/challenge2021-amazon/</guid>
+      <description>Contact info: Fernando Carazo fcarazo@tecnun.es
+1 Department of Biomedical Engineering and Sciences, Tecnun. University of Navarre
+2 Institute Of Data Science and Artificial Intelligence, University of Navarre
+
+Introduction. Vehicle Routing ProblemThis year’s Challenge in the subject Arquitectura de Computadores II will be related to the delivery process of Amazon.
+In the Vehicle Routing Problem (VRP), the goal is to find optimal routes for multiple vehicles visiting a set of locations.</description>
     </item>
     
   </channel>

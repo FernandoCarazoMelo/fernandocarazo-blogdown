@@ -6,10 +6,36 @@
     <description>Recent content on Fernando Carazo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Challenge2021 - Amazon</title>
+      <link>/blog/2021/05/03/challenge2021-amazon/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021/05/03/challenge2021-amazon/</guid>
+      <description>Contact info: Fernando Carazo fcarazo@tecnun.es
+1 Department of Biomedical Engineering and Sciences, Tecnun. University of Navarre
+2 Institute Of Data Science and Artificial Intelligence, University of Navarre
+
+Introduction. Vehicle Routing ProblemThis year’s Challenge in the subject Arquitectura de Computadores II will be related to the delivery process of Amazon.
+In the Vehicle Routing Problem (VRP), the goal is to find optimal routes for multiple vehicles visiting a set of locations.</description>
+    </item>
+    
+    <item>
+      <title>How to plot PRO graphs with R iGraph and VisNetworks</title>
+      <link>/blog/2021/05/03/01.02b_visnetwork_examples/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021/05/03/01.02b_visnetwork_examples/</guid>
+      <description>Contact info: Fernando Carazo fcarazo@tecnun.es
+1 Department of Biomedical Engineering and Sciences, Tecnun. University of Navarre
+2 Institute Of Data Science and Artificial Intelligence, University of Navarre
+### vizNetwork##vn1library(igraph)## ## Attaching package: &amp;#39;igraph&amp;#39;## The following objects are masked from &amp;#39;package:stats&amp;#39;:## ## decompose, spectrum## The following object is masked from &amp;#39;package:base&amp;#39;:## ## unionrequire(visNetwork, quietly = TRUE)# minimal examplenodes &amp;lt;- data.</description>
+    </item>
     
     <item>
       <title>Crea tu web personal en 5 minutos</title>

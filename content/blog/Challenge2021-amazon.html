@@ -1,0 +1,159 @@
+---
+title: "Challenge2021 - Amazon"
+author: "Fernando Carazo^1,2^ (adapted from Google dev platform)"
+date: '2021-05-03'
+output:
+  html_document:
+    theme: spacelab
+    highlight: haddock
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+    df_print: paged
+    number_sections: yes
+    keep_md: yes
+---
+
+
+
+<p>Contact info: <strong>Fernando Carazo</strong> <a href="mailto:fcarazo@tecnun.es" class="email">fcarazo@tecnun.es</a></p>
+<p><a href="https://www.unav.edu/en/web/departamento-de-ingenieria-biomedica-y-ciencias/investigacion/computational-biology/presentacion"><em><sup>1</sup> Department of Biomedical Engineering and Sciences, Tecnun. University of Navarre</em></a></p>
+<p><a href="https://www.unav.edu/en/web/instituto-de-ciencia-de-los-datos-e-inteligencia-artificial"><em><sup>2</sup> Institute Of Data Science and Artificial Intelligence, University of Navarre</em></a></p>
+<p><br>
+<br></p>
+<p><img src="https://cdn2.downdetector.com/static/uploads/c/300/741da/amazon.png" /></p>
+<div id="introduction.-vehicle-routing-problem" class="section level1">
+<h1>Introduction. Vehicle Routing Problem</h1>
+<p>This year’s Challenge in the subject <em>Arquitectura de Computadores II</em> will be related to the delivery process of Amazon.</p>
+<p>In the Vehicle Routing Problem (VRP), the goal is to find optimal routes for multiple vehicles visiting a set of locations. (When there’s only one vehicle, it reduces to the Traveling Salesman Problem, as shown in class.)</p>
+<div class="figure">
+<img src="https://developers.google.com/optimization/images/routing/tsp.svg" alt="" />
+<p class="caption">Traditional TSP</p>
+</div>
+<p>But what do we mean by “optimal routes” for a VRP? One answer is the routes with the least total distance. However, if there are no other constraints, the optimal solution is to assign just one vehicle to visit all locations, and find the shortest route for that vehicle. This is essentially the same problem as the TSP.</p>
+<p>A better way to define optimal routes is to minimize the length of the longest single route among all vehicles. This is the right definition if the goal is to complete all deliveries as soon as possible. The VRP example below finds optimal routes defined this way.</p>
+<p>Imagine a company that needs to visit its customers in a city made up of identical rectangular blocks. A diagram of the city is shown below, with the company location marked in black and the locations to visit in blue.</p>
+<p><img src="https://developers.google.com/optimization/images/routing/vrp.svg" /></p>
+<p>In addition to multiple vehicles, we’ll describe other ways of generalizing the TSP by adding constraints on the vehicles. In our case, time windows.</p>
+</div>
+<div id="this-years-challenge-vehicle-routing-problems-with-time-windows" class="section level1">
+<h1>This year’s Challenge: Vehicle routing problems with time windows</h1>
+<p>Many vehicle routing problems involve scheduling visits to customers who are only available during specific time windows. These problems are known as vehicle routing problems with time windows (VRPTWs).</p>
+<p>This year, we’ll walk through an example that shows how to solve a VRPTW. Since the problem involves time windows, the data include a time matrix, which contains the travel times between locations (rather than a distance matrix as in previous examples).</p>
+<p>The diagram below shows the locations to visit in blue and the depot in black. The time windows are shown above each location. See Location coordinates in the VRP section for more details about how the locations are defined.</p>
+<p>The goal is to minimize the total travel time of the vehicles.</p>
+<div class="figure">
+<img src="https://developers.google.com/optimization/images/routing/vrptw.svg" alt="" />
+<p class="caption">VRPTW Example</p>
+</div>
+<p>The data consists of:</p>
+<p><code>data['time_matrix']</code>: An array of travel times between locations. Note that this differs from previous examples, which use a distance matrix. If all vehicles travel at the same speed, you will get the same solution if you use a distance matrix or a time matrix, since travel distances are a constant multiple of travel times.</p>
+<p><code>data['time_windows']</code>: An array of time windows for the locations, which you can think of as requested times for a visit. Vehicles must visit a location within its time window.</p>
+<p><code>data['num_vehicles']</code>: The number of vehicles in the fleet. For us four vehicles.</p>
+<p><code>data['depot']</code>: The index of the depot.</p>
+<pre><code>    data[&#39;time_matrix&#39;] = [
+        [0, 6, 9, 8, 7, 3, 6, 2, 3, 2, 6, 6, 4, 4, 5, 9, 7],
+        [6, 0, 8, 3, 2, 6, 8, 4, 8, 8, 13, 7, 5, 8, 12, 10, 14],
+        [9, 8, 0, 11, 10, 6, 3, 9, 5, 8, 4, 15, 14, 13, 9, 18, 9],
+        [8, 3, 11, 0, 1, 7, 10, 6, 10, 10, 14, 6, 7, 9, 14, 6, 16],
+        [7, 2, 10, 1, 0, 6, 9, 4, 8, 9, 13, 4, 6, 8, 12, 8, 14],
+        [3, 6, 6, 7, 6, 0, 2, 3, 2, 2, 7, 9, 7, 7, 6, 12, 8],
+        [6, 8, 3, 10, 9, 2, 0, 6, 2, 5, 4, 12, 10, 10, 6, 15, 5],
+        [2, 4, 9, 6, 4, 3, 6, 0, 4, 4, 8, 5, 4, 3, 7, 8, 10],
+        [3, 8, 5, 10, 8, 2, 2, 4, 0, 3, 4, 9, 8, 7, 3, 13, 6],
+        [2, 8, 8, 10, 9, 2, 5, 4, 3, 0, 4, 6, 5, 4, 3, 9, 5],
+        [6, 13, 4, 14, 13, 7, 4, 8, 4, 4, 0, 10, 9, 8, 4, 13, 4],
+        [6, 7, 15, 6, 4, 9, 12, 5, 9, 6, 10, 0, 1, 3, 7, 3, 10],
+        [4, 5, 14, 7, 6, 7, 10, 4, 8, 5, 9, 1, 0, 2, 6, 4, 8],
+        [4, 8, 13, 9, 8, 7, 10, 3, 7, 4, 8, 3, 2, 0, 4, 5, 6],
+        [5, 12, 9, 14, 12, 6, 6, 7, 3, 3, 4, 7, 6, 4, 0, 9, 2],
+        [9, 10, 18, 6, 8, 12, 15, 8, 13, 9, 13, 3, 4, 5, 9, 0, 9],
+        [7, 14, 9, 16, 14, 8, 5, 10, 6, 5, 4, 10, 8, 6, 2, 9, 0],
+    ]
+
+    data[&#39;time_windows&#39;] = [
+        (0, 5),  # depot
+        (7, 12),  # 1
+        (10, 15),  # 2
+        (16, 18),  # 3
+        (10, 13),  # 4
+        (0, 5),  # 5
+        (5, 10),  # 6
+        (0, 4),  # 7
+        (5, 10),  # 8
+        (0, 3),  # 9
+        (10, 16),  # 10
+        (10, 15),  # 11
+        (0, 5),  # 12
+        (5, 10),  # 13
+        (7, 8),  # 14
+        (10, 15),  # 15
+        (11, 15),  # 16
+    ]
+    data[&#39;num_vehicles&#39;] = 4
+    data[&#39;depot&#39;] = 0</code></pre>
+<p>The diagram below shows the assigned routes, in which the location indices have been converted to the corresponding x-y coordinates.</p>
+<div class="figure">
+<img src="https://developers.google.com/optimization/images/routing/vrpgs_solution.svg" alt="" />
+<p class="caption">Possible solution with 4 vehicles</p>
+</div>
+</div>
+<div id="delivery-details" class="section level1">
+<h1>Delivery details</h1>
+<p>This work corresponds to 50% of the evaluation of this part of the subject. For the work to be considered complete, it must contain at least the following parts:</p>
+<ul>
+<li><p>An executable Matlab script without errors.</p></li>
+<li><p>A report explaining the work done including at least:</p>
+<ul>
+<li>Description of the problem</li>
+<li>Decision variables</li>
+<li>Objective function (equation) explained</li>
+<li>Problem Constraints (equations) explained</li>
+<li>Analysis of the Solution</li>
+</ul></li>
+</ul>
+<p>This report can be presented either in English or in Spanish in the format that seems most appropriate to you, not necessarily as a Word document; for example, PDF or a latex-PDF could be delivered explaining what was done.</p>
+<p>For the evaluation, the following criteria will be considered:</p>
+<ul>
+<li>That the code runs without errors. That the code is clean and commented.</li>
+<li>That the code is capable of meeting at least the minimum objectives that are requested in the work (identify the data, classify it, export it to Excel and generate one or more summary graphs).</li>
+<li>A plus but NOT a requirement: that the code is general will be , so that it could be potentially applied with a different dataset with more nodes.</li>
+<li>Make the report clear.</li>
+<li>Other functionalities that you want to give the script will be positively valued in the note.</li>
+</ul>
+<p><strong>The work will be uploaded to the ADI activity with the previously formed groups.</strong></p>
+<p><strong>The deadline will be May 30, 23:59.</strong></p>
+</div>
+<div id="annex" class="section level1">
+<h1>Annex</h1>
+<div id="location-coordinates" class="section level2">
+<h2>Location coordinates</h2>
+<p>To set up the example and compute the distance matrix, we have assigned the following x-y coordinates to the locations shown in the city diagram:</p>
+<pre><code>[(456, 320), # location 0 - the depot
+(228, 0),    # location 1
+(912, 0),    # location 2
+(0, 80),     # location 3
+(114, 80),   # location 4
+(570, 160),  # location 5
+(798, 160),  # location 6
+(342, 240),  # location 7
+(684, 240),  # location 8
+(570, 400),  # location 9
+(912, 400),  # location 10
+(114, 480),  # location 11
+(228, 480),  # location 12
+(342, 560),  # location 13
+(684, 560),  # location 14
+(0, 640),    # location 15
+(798, 640)]  # location 16</code></pre>
+<p>Note that the location coordinates are not included in the problem data: all you need to solve the problem is the distance matrix, which we have pre-computed. You only need the location data to identify the locations in the solution, which are denoted by their indices (0, 1, 2 …) in the above list.</p>
+<p>The main purpose of showing the location coordinates and the city diagram in this and other examples is to provide a visual display of the problem and its solution. But this is not essential for solving a VRP.</p>
+<p>For convenience in setting up the problem, the distances between locations are calculated using Manhattan distance, in which the distance between two points, (x1, y1) and (x2, y2) is defined to be |x1 - x2| + |y1 - y2|. However, there is no special reason to use this definition. You can use whatever method is best suited to your problem to calculate distances. Or, you can obtain a distance matrix for any set of locations in the world using the Google Distance Matrix API. See Distance Matrix API for an example of how to do this.</p>
+</div>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p><a href="https://developers.google.com/">Google OR</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling salesman problem</a></p>
+<p><a href="https://link.springer.com/chapter/10.1007/978-3-319-59776-8_21">Travelling salesman problem with Time Windows</a></p>
+</div>

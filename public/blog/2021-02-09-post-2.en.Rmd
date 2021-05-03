@@ -12,4 +12,4 @@ tags:
 ---
 
 
-![image for dani](/post/2021-02-09-post-2.en_files/img_1.jpg)
+![image for dani](/blog/2021-02-09-post-2.en_files/img_1.jpg)
